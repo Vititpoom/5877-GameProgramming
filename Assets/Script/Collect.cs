@@ -8,13 +8,13 @@ public class Collect : MonoBehaviour
 
     void Start()
     {
-        
-        //if (TryGetComponent(out Random));
+
+        if (TryGetComponent(out RandomColor randomColor))
+        {
+            color = randomColor.color;
+        }
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

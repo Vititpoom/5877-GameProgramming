@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class RandomColor : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public characterColor color;
+    [SerializeField] private Sprite[] sprites;
+    [SerializeField] private int randomNumber;
+    private SpriteRenderer spriteRenderer;
+
+
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        randomNumber = Random.Range(0, sprites.Length);
+
+        switch (randomNumber)
+        {
+            case 0:
+                color = characterColor.Red;
+                break;
+            case 1:
+                color = characterColor.Green;
+                break;
+            case 2:
+                color = characterColor.Blue;
+                break;
+            case 3:
+                color = characterColor.Yellow;
+                break;
+        }
+
+        spriteRenderer.sprite = sprites[randomNumber];
+
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

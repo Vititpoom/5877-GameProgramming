@@ -69,5 +69,28 @@ public class PlayerControl : MonoBehaviour
             }
             Destroy(collect.gameObject);  
         }
+        if (collision.gameObject.TryGetComponent(out RandomColor randomColor))
+        {
+            characterColor playerColor = randomColor.color;
+
+            switch (playerColor)
+            {
+                case characterColor.Red:
+                    spriteRenderer.color = Color.red;
+                    break;
+
+                case characterColor.Blue:
+                    spriteRenderer.color = Color.blue;
+                    break;
+
+                case characterColor.Green:
+                    spriteRenderer.color = Color.green;
+                    break;
+                case characterColor.Yellow:
+                    spriteRenderer.color = Color.yellow;
+                    break;
+            }
+            Destroy(randomColor.gameObject);
+        }
     }
 }
