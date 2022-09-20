@@ -6,8 +6,11 @@ public class Collect : MonoBehaviour
 {
     public characterColor color;
 
+    [SerializeField] private SoCollectible soCollectible;
+    [SerializeField] private ReSpawnControl spawnControl;
     void Start()
     {
+       
 
         if (TryGetComponent(out RandomColor randomColor))
         {
@@ -15,6 +18,11 @@ public class Collect : MonoBehaviour
         }
 
 
+    }
+
+    private void OnDisable()
+    {
+        spawnControl.RespawnObject();
     }
 
 }

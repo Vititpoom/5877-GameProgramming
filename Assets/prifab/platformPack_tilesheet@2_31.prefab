@@ -96,7 +96,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.003205061, y: -0.009615183}
@@ -125,8 +125,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  collectiblePrefabs: []
-  sprites: []
-  spriteRenderer: {fileID: 0}
-  isRandom: 0
-  randomNumber: 0
+  soCollectible: {fileID: 11400000, guid: f80d4ad0fbb1a2740812bd298f4fd8da, type: 2}
