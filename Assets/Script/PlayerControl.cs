@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
 {
     [Header("Component References")]
     [SerializeField] private Transform player;
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     [SerializeField] private PlayerAnimatorControl animatorControl;
     [SerializeField] private Collider2D playerColider;
 
