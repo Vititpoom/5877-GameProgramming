@@ -12,10 +12,16 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] public Rigidbody2D rb;
     [SerializeField] private PlayerAnimatorControl animatorControl;
     [SerializeField] private Collider2D playerColider;
+    [SerializeField] private BoxCollider2D playerBoxCollider;
+    [SerializeField] private LayerMask playerLayerMask;
+    
+    
 
     [Header("Player Value")]
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float speed = 10f;
+    private float coyoteTime = 0.5f;
+    private float coyoteTimeCoubter;
 
     [Header("Grounded Check")]
     [SerializeField] private LayerMask groundLayers;
@@ -36,18 +42,30 @@ public class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-       SetAnimatorParameters();    
-       checkGround();
+        SetAnimatorParameters();    
+        //CheckGround();
+
+        
     }
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(_moveInput * speed, rb.velocity.y);  
+        rb.velocity = new Vector2(_moveInput * speed, rb.velocity.y);
+        if (CheckGround())
+        {
+            coyoteTimeCoubter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCoubter -= Time.deltaTime;
+        }
     }
      private void OnJump(InputValue value)
     {
-        if (value.isPressed) 
+        if (value.isPressed && coyoteTimeCoubter > 0) 
         {
-            TryJumping();
+            //TryJumping();
+            rb.AddForce((jumpForce * transform.up), ForceMode2D.Impulse);
+            coyoteTimeCoubter = 0;
         }
     }
     private void OnMove(InputValue value)
@@ -68,11 +86,11 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void checkGround()
+    private bool CheckGround()
     {
         var playerBounds = playerColider.bounds;
 
-        var raycastHit = Physics2D.BoxCast(
+        var raycastHit2D = Physics2D.BoxCast(
                                             playerBounds.center,
                                             playerBounds.size,
                                             0f,
@@ -80,7 +98,8 @@ public class PlayerControl : MonoBehaviour
                                             groundCheckDistance,
                                             groundLayers
                                            );
-        _isGrounded = raycastHit.collider != null;
+       
+        return _isGrounded = raycastHit2D.collider != null;
 
        
     }
@@ -89,12 +108,15 @@ public class PlayerControl : MonoBehaviour
     {
         animatorControl.SetAnimetorParameter(rb.velocity, _isGrounded);
     }
-    private void TryJumping()
+    /*private void TryJumping()
     {
         if (!_isGrounded) return;
 
         rb.AddForce((jumpForce * transform.up), ForceMode2D.Impulse);
-    }
+    }*/
+
+    
+    
 
 
 }

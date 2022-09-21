@@ -73,7 +73,7 @@ public class PlayerCollision : MonoBehaviour
                     spriteRenderer.color = Color.yellow;
                     break;
             }
-            Destroy(randomColor.gameObject);
+            collision.gameObject.SetActive(false);
         }
 
         if (_playerCollider.IsTouchingLayers(LayerMask.GetMask("Hazard")))

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ReSpawnControl : MonoBehaviour
 {
-    [SerializeField] private float time;
+    [SerializeField] private float time = 4f;
     [SerializeField] private GameObject respawnObject;
 
     public void RespawnObject()

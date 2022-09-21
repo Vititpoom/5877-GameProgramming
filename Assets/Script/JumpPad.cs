@@ -10,8 +10,10 @@ public class JumpPad : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-      PlayerControl playerControl = collision.gameObject.GetComponentInChildren<PlayerControl>();
+        PlayerControl playerControl = collision.gameObject.GetComponentInChildren<PlayerControl>();
         playerControl.rb.AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
 
+        animator.SetTrigger("Bounce");
     }
+
 }
