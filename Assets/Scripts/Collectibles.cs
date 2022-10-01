@@ -1,16 +1,20 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class Collectibles : MonoBehaviour
 {
     [SerializeField] private CollectibleSpawner collectibleSpawner;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private SoCollectibles collectibleObject;
-    
+    [SerializeField] private SOCollectibles collectibleObject;
+    [SerializeField] private Transform endpoint;
     private CollectibleType _collectibleType;
     private bool _isRespawnable;
+    private GameManager _gameManager;   
 
     private void Start()
     {
+        _gameManager = FindObjectOfType<GameManager>();
+        transform.DOMove(endpoint.position, duration: 3f).SetEase(Ease.InOutQuad).SetLoops(-1, LoopType.Yoyo);
         SetCollectible();
     }
 
@@ -33,4 +37,6 @@ public class Collectibles : MonoBehaviour
         _collectibleType = collectibleObject.GetCollectibleType();
         _isRespawnable = collectibleObject.GetRespawnable();
     }
+
+
 }

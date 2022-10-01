@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    [SerializeField] private LivesDisplay LivesDisplay = null; 
+    [SerializeField] private LivesDisplay LivesDisplay; 
     [SerializeField] private int lives = 3;
 
 

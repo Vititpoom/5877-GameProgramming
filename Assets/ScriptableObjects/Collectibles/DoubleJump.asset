@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 01631785dec8be74d81c150e46eefa9a, type: 3}
   m_Name: DoubleJump
   m_EditorClassIdentifier: Assembly-CSharp::SoCollectibles
   collectibleType: 3
-  sprite: {fileID: 0}
-  outlineSprite: {fileID: 0}
-  respawnable: 0
+  sprite: {fileID: -1520228389, guid: 944d726096e77d643b2a8c56e779cd57, type: 3}
+  outlineSprite: {fileID: -192899936, guid: 944d726096e77d643b2a8c56e779cd57, type: 3}
+  respawnable: 1
