@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     // Stored References
     private GameManager _gameManager;
 
+   
     private void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
@@ -140,6 +141,7 @@ public class PlayerController : MonoBehaviour
     {
         _gameManager = FindObjectOfType<GameManager>();
         _gameManager.DamagePlayer();
+        audioController.PlayDeathSound();
     }
     
     #endregion

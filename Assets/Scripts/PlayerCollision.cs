@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
-
+    
     private Collider2D _playerCollider;
     private void Start()
     {
@@ -20,11 +20,12 @@ public class PlayerCollision : MonoBehaviour
         else if (col.TryGetComponent(out Collectibles collectible))
         {
             var collectibleType = collectible.GetCollectibleInfoOnContact();
-
+            
             switch (collectibleType)
             {
                 case CollectibleType.DoubleJump:
                     playerController.EnableDoubleJump();
+                    
                     break;
                 case CollectibleType.RefillHealth:
                 case CollectibleType.RefillEnergy:
@@ -34,6 +35,7 @@ public class PlayerCollision : MonoBehaviour
             }
             
             Debug.Log(collectibleType);
+            
         }
 
         if (_playerCollider.IsTouchingLayers(LayerMask.GetMask("Hazard")))

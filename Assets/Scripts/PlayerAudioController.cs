@@ -6,9 +6,14 @@ public class PlayerAudioController : MonoBehaviour
 {
 
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] protected SOAudioClip jumpAudioClip;
-    [SerializeField] protected SOAudioClip walkAudioClip;
-    
+    [SerializeField] private SOAudioClip jumpAudioClip;
+    [SerializeField] private SOAudioClip walkAudioClip;
+    [SerializeField] private SOAudioClip collectAudioClip;
+    [SerializeField] private SOAudioClip respawnAudioClip;
+    [SerializeField] private SOAudioClip deathAudioClip;
+    [SerializeField] private SOAudioClip jumpPadAudioClip;
+    [SerializeField] private SOAudioClip winningAudioClip;
+
 
     public void PlayJumpSound()
     {
@@ -18,5 +23,27 @@ public class PlayerAudioController : MonoBehaviour
     public void PlayWalkSound()
     {
         audioSource.PlayOneShot(walkAudioClip.GetAudioClip());
+    }
+
+    public void PlayCollectSound()
+    {
+        audioSource.PlayOneShot(collectAudioClip.GetAudioClip());
+    }
+    public void PlayRespawnSound()
+    {
+        audioSource.PlayOneShot(respawnAudioClip.GetAudioClip());
+    }
+
+    public void PlayDeathSound()
+    {
+        audioSource.PlayOneShot(deathAudioClip.GetAudioClip());
+    }
+    public void PlayJumpPadSound()
+    {
+        audioSource.PlayOneShot(jumpPadAudioClip.GetAudioClip());
+    }
+    public void PlayWinningSound()
+    {
+        audioSource.PlayOneShot(winningAudioClip.GetAudioClip());
     }
 }

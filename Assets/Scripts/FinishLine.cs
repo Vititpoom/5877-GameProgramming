@@ -6,10 +6,11 @@ public class FinishLine : MonoBehaviour
 
     private GameManager _gameManager;
     [SerializeField] private int lavel;
-    
+    [SerializeField] private PlayerAudioController audioController;
+
     // Why are we checking if the player reaches the finish line here? So, we do not
     // have to check for every time the player collides with something for a finish line.
-    
+
     private void Start()
     {
         _gameManager = FindObjectOfType<GameManager>();
@@ -18,7 +19,14 @@ public class FinishLine : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (!col.CompareTag(PlayerTag)) return;
-
+        PlaySound();
         _gameManager.LoadScene(lavel);
+        
+    }
+
+    private void PlaySound()
+    {
+        audioController.PlayWinningSound();
+        
     }
 }

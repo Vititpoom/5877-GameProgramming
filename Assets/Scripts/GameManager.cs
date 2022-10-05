@@ -80,11 +80,12 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
             Destroy(gameObject);
+            BGMusicController.Instance.gameObject.GetComponent<AudioSource>().Stop();
             DOTween.KillAll();
         }
         else
         {
-           ProcessPlayerDeath();    
+           ProcessPlayerDeath();
         }
         UpdateLives();
     }
