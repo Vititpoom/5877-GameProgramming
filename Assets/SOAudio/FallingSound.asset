@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45fb083b99586b24f8da429e96b1b6de, type: 3}
-  m_Name: Collect
+  m_Name: FallingSound
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: a65c074913035404791334a5c8e9f1c4, type: 3}
+  - {fileID: 8300000, guid: 8bf10075b0d800c4b8f27522ebae6e10, type: 3}

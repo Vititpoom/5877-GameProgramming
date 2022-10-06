@@ -15,15 +15,16 @@ public class CollectibleSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnTime);
         
-        SetOutlineSpriteActive(false);
-        
-        collectibleGameObject.SetActive(true);
         audioController.PlayRespawnSound();
+        SetOutlineSpriteActive(false);
+        collectibleGameObject.SetActive(true);
+       
     }
 
     private void SetOutlineSpriteActive(bool state)
     {
-        audioController.PlayCollectSound();
+        
+        
         spriteRenderer.enabled = state;
     }
 

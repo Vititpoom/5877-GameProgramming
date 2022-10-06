@@ -143,7 +143,11 @@ public class PlayerController : MonoBehaviour
         _gameManager.DamagePlayer();
         audioController.PlayDeathSound();
     }
-    
+
+    public void Falling()
+    {
+        audioController.PlayFallingSound();
+    }
     #endregion
     
     #region Input

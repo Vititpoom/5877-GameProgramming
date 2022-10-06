@@ -26,7 +26,7 @@ public class FinishLine : MonoBehaviour
 
     private void PlaySound()
     {
-        audioController.PlayWinningSound();
+        _gameManager.WinSound();
         
     }
 }

@@ -13,6 +13,7 @@ public class PlayerAudioController : MonoBehaviour
     [SerializeField] private SOAudioClip deathAudioClip;
     [SerializeField] private SOAudioClip jumpPadAudioClip;
     [SerializeField] private SOAudioClip winningAudioClip;
+    [SerializeField] private SOAudioClip fallingAudioClip;
 
 
     public void PlayJumpSound()
@@ -45,5 +46,9 @@ public class PlayerAudioController : MonoBehaviour
     public void PlayWinningSound()
     {
         audioSource.PlayOneShot(winningAudioClip.GetAudioClip());
+    }
+    public void PlayFallingSound()
+    {
+        audioSource.PlayOneShot(fallingAudioClip.GetAudioClip());
     }
 }

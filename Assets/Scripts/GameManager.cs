@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LivesDisplay LivesDisplay; 
     [SerializeField] private int lives = 3;
 
+    [SerializeField] private AudioSource _audioControl;
+    [SerializeField] private SOAudioClip _winingClip;
+    [SerializeField] private SOAudioClip _deathClip;
+    
+
 
     // Simple singleton script. This is the easiest way to create and understand a singleton script.
 
@@ -30,7 +35,7 @@ public class GameManager : MonoBehaviour
     
     public void ProcessPlayerDeath()
     {
-
+        DeathSound();
         SceneManager.LoadScene(GetCurrentBuildIndex());
     }
 
@@ -68,6 +73,7 @@ public class GameManager : MonoBehaviour
     public void MainMenu()
     {
         LoadScene(0);
+        BGMusicController.Instance.gameObject.GetComponent<AudioSource>().Play();
         Destroy(gameObject);
     }
 
@@ -80,7 +86,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
             Destroy(gameObject);
-            BGMusicController.Instance.gameObject.GetComponent<AudioSource>().Stop();
+            BGMusicController.Instance.gameObject.GetComponent<AudioSource>().Pause();
             DOTween.KillAll();
         }
         else
@@ -93,6 +99,16 @@ public class GameManager : MonoBehaviour
     private void UpdateLives()
     {
         LivesDisplay.UpdateLives(lives);
+    }
+
+    public void WinSound()
+    {
+        _audioControl.PlayOneShot(_winingClip.GetAudioClip());
+    }
+
+    public void DeathSound()
+    {
+        _audioControl.PlayOneShot(_deathClip.GetAudioClip());
     }
 
     

@@ -1,9 +1,11 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
-    
+    [SerializeField] private PlayerAudioController audioController;
+
     private Collider2D _playerCollider;
     private void Start()
     {
@@ -19,6 +21,7 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (col.TryGetComponent(out Collectibles collectible))
         {
+            audioController.PlayCollectSound();
             var collectibleType = collectible.GetCollectibleInfoOnContact();
             
             switch (collectibleType)
@@ -43,6 +46,8 @@ public class PlayerCollision : MonoBehaviour
             playerController.TakeDamage();
         }
 
+        
+
         #region Unused
 
         /*if (!col.TryGetComponent(out Collectibles collectible)) return;  
@@ -64,5 +69,13 @@ public class PlayerCollision : MonoBehaviour
             }*/
 
         #endregion
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (_playerCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            playerController.Falling();
+        }
     }
 }
