@@ -61,8 +61,18 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(int buildIndex)
     {
-        SceneManager.LoadScene(buildIndex);
-        DOTween.KillAll();
+        if (buildIndex == 0)
+        {
+            SceneManager.LoadScene(buildIndex);
+            Destroy(gameObject);
+            DOTween.KillAll();
+        }
+        else
+        {
+            SceneManager.LoadScene(buildIndex);
+            DOTween.KillAll();
+        }
+        
     }
 
     public void QuitGame()

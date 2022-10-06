@@ -18634,7 +18634,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8682422404570236971, guid: 1688c7a5dcceac54eb2cfddede3a1be7, type: 3}
       propertyPath: lavel
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8682422404570236971, guid: 1688c7a5dcceac54eb2cfddede3a1be7, type: 3}
       propertyPath: audioController
