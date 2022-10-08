@@ -23,8 +23,6 @@ public class CollectibleSpawner : MonoBehaviour
 
     private void SetOutlineSpriteActive(bool state)
     {
-        
-        
         spriteRenderer.enabled = state;
     }
 
