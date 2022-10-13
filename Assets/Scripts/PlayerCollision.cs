@@ -5,6 +5,7 @@ public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PlayerAudioController audioController;
+    [SerializeField] private ParticleSystem _collect;
 
     private Collider2D _playerCollider;
     private void Start()
@@ -22,6 +23,7 @@ public class PlayerCollision : MonoBehaviour
         else if (col.TryGetComponent(out Collectibles collectible))
         {
             audioController.PlayCollectSound();
+            _collect.Play();
             var collectibleType = collectible.GetCollectibleInfoOnContact();
             
             switch (collectibleType)

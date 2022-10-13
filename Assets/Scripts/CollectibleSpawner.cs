@@ -7,6 +7,8 @@ public class CollectibleSpawner : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private GameObject collectibleGameObject;
     [SerializeField] private PlayerAudioController audioController;
+    [SerializeField] private ParticleSystem _reSpawn;
+    
 
     [Header("Collectible Settings")]
     [SerializeField] private float respawnTime = 4f;
@@ -14,7 +16,7 @@ public class CollectibleSpawner : MonoBehaviour
     private IEnumerator RespawnCollectible()
     {
         yield return new WaitForSeconds(respawnTime);
-        
+        _reSpawn.Play();
         audioController.PlayRespawnSound();
         SetOutlineSpriteActive(false);
         collectibleGameObject.SetActive(true);

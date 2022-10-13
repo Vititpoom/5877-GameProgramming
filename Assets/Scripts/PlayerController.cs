@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private PlayerAnimatorController animatorController;
     [SerializeField] private PlayerAudioController audioController;
+    [SerializeField] private ParticleFxController particleFxController;
 
     [Header("Player Values")] 
     [SerializeField] private float movementSpeed = 3f;
@@ -58,6 +59,14 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         rb.velocity = new Vector2(_moveInput * movementSpeed, rb.velocity.y);
+        if (_isGrounded && _moveInput != 0) 
+        {
+            particleFxController.WalkFxOn();
+        }
+        else
+        {
+            particleFxController.WalkFxOff();
+        }
     }
 
     private void FlipPlayerSprite()
@@ -139,14 +148,17 @@ public class PlayerController : MonoBehaviour
     
     public void TakeDamage()
     {
+        particleFxController.DeathFx();
         _gameManager = FindObjectOfType<GameManager>();
         _gameManager.DamagePlayer();
         audioController.PlayDeathSound();
+        
     }
 
     public void Falling()
     {
         audioController.PlayFallingSound();
+        particleFxController.FallFx();
     }
     #endregion
     
@@ -155,7 +167,6 @@ public class PlayerController : MonoBehaviour
     private void OnMove(InputValue value)
     {
         _moveInput = value.Get<float>();
-        
         FlipPlayerSprite();
     }
 
@@ -172,6 +183,8 @@ public class PlayerController : MonoBehaviour
         _gameManager.MainMenu();
         
     }
+
+   
 
     #endregion
 
